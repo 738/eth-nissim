@@ -58,11 +58,13 @@ class App extends Component {
         // Stores a given value, 5 by default.
         return simpleStorageInstance.registerChild("Jon Jee", true, "1995.07.04", {from: accounts[0]})
       }).then((result) => {
+        console.log(result);
         // Get the value from the contract to prove it worked.
         return simpleStorageInstance.getLastChild.call(accounts[0])
       }).then((result) => {
+        console.log(result);
         // Update state with the result.
-        return this.setState({ storageValue: result.c[0] })
+        return this.setState({ storageValue: result })
       })
     })
   }
