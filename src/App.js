@@ -12,7 +12,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      storageValue: 0,
+      storageValue: "NAME",
       web3: null
     }
   }
@@ -56,10 +56,10 @@ class App extends Component {
         simpleStorageInstance = instance
 
         // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(777, {from: accounts[0]})
+        return simpleStorageInstance.registerChild("Jon Jee", true, "1995.07.04", {from: accounts[0]})
       }).then((result) => {
         // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(accounts[0])
+        return simpleStorageInstance.getLastChild.call(accounts[0])
       }).then((result) => {
         // Update state with the result.
         return this.setState({ storageValue: result.c[0] })

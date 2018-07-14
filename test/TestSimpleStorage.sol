@@ -9,11 +9,9 @@ contract TestSimpleStorage {
   function testItStoresAValue() public {
     SimpleStorage simpleStorage = SimpleStorage(DeployedAddresses.SimpleStorage());
 
-    simpleStorage.set(89);
+    simpleStorage.registerChild("Jon Jee", true, "1995.07.04");
 
-    uint expected = 89;
-
-    Assert.equal(simpleStorage.get(), expected, "It should store the value 89.");
+    Assert.equal(simpleStorage.getLastChild(), "Jon Jee", "It should store the value \"Jon Jee\".");
   }
 
 }
